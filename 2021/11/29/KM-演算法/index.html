@@ -22,7 +22,7 @@
 
   
 
-  <title>2021/11/28 小記 3D + TOEIC | ShallowFeather Blog</title>
+  <title>匈牙利演算法 | ShallowFeather Blog</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">2021/11/28 小記 3D + TOEIC</h1>
+          <h1 class="title-wrap">匈牙利演算法</h1>
           <h2 class="title-sub-wrap">
             <strong>ShallowFeather Yang</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-11-28T14:10:00.000Z" itemprop="datePublished">2021-11-28</time>
+            <time  class="article-date" datetime="2021-11-28T19:37:16.000Z" itemprop="datePublished">2021-11-29</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -129,125 +129,40 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>總之，明天生日 owo</p>
-<p>所以今天去吃饗食天地</p>
-<p>感覺今天什麼都沒做QQ</p>
-<p>但回家還是有寫多益的聽力 76/100 總之就是有進步</p>
-<p>我覺得需要反省的是注意力渙散的問題 希望有朝一日能處理好</p>
-<p>然後還有畫 3D 繪圖吧</p>
-<p>個人期望能夠畫完放備審，雖然不到能看的水平@@</p>
-<p><img src="/images/pasted-0.png" alt="upload successful"></p>
-<p>最近看很多人特選一階沒過，回頭看自己也覺得自己超廢，什麼都沒有只有資安貌似有一點點</p>
-<p>近期我也消失在資安圈了，看別人去 HITCON 真的好羨慕，或許這就是住在南部的缺點吧</p>
-<p>看到別人每天 FB 都在創造新的成績，新的歷程 壓力都會湧上來 學校ㄊㄇ我猜大部分人一定也是看我下去吧 = =</p>
-<p>我自己真的好怕沒大學 雞巴</p>
-<p>不過，李佳樺提醒了我一點 經歷不是重點，增進自己的實力後，經歷就會伴隨自己了。</p>
-<p>真的有點忘記初心了QQ</p>
-<hr>
-<p>下面的話就放今天寫的多益ㄅ</p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gSEXsr_vKvI&t=2752s">LINK</a><br>`<br>76/100</p>
+        <h4 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h4><p><del>我發現 h3 好大ouo</del></p>
+<p>匈牙利算法主要用來解決求二分圖的最大匹配問題</p>
+<p>二分圖就是一種能夠分成兩組 U，V 。且 U 上的點無法互相連通，V 也是同理，只能夠 U &lt;-&gt; V，也就是 U 跟 V互相連接。<br><img src="/images/pasted-1.png" alt="upload successful"><br>那接下來就來講我們的匈牙利算法。</p>
+<p>會用上面的圖 owo </p>
+<p>而如果寫過圖論相關的題目的話，很顯而易見的之中的線上的數值就是其權重。<br>整理成表的話長這樣。<br><img src="/images/pasted-2.png" alt="upload successful"><br>那只要透過手算便可以發現，此圖的”最小”匹配是</p>
+<p>50 + 35 + 22 ＝ 107</p>
+<p>可能要問了，為什麼是最小，這邊先賣個關子等後面解說。<br>那下面就來講解怎麼找出最小匹配</p>
+<p>首先，先找出圖中每一行的最小值，然後讓該行所有元素減去該值，白話點講就是每行減去該行最小值(好像沒差<br><img src="/images/pasted-3.png" alt="upload successful"><br>那之後我們就會得到該圖</p>
+<p>那麼重複剛剛的動作，不過是以列<br><img src="/images/pasted-4.png" alt="upload successful"><br>也就是這樣<br>會得到<br><img src="/images/pasted-5.png" alt="upload successful"><br>接下來 進入迴圈<br>總共有三步：</p>
 <ol>
-<li>D</li>
-<li>B</li>
-<li>A</li>
-<li>A</li>
-<li>C</li>
-<li>D</li>
-<li>A</li>
-<li>C</li>
-<li>A</li>
-<li>B</li>
-<li>A</li>
-<li>B</li>
-<li>B C</li>
-<li>A C</li>
-<li>C </li>
-<li>A B</li>
-<li>B</li>
-<li>A</li>
-<li>A</li>
-<li>C</li>
-<li>A</li>
-<li>A</li>
-<li>B D</li>
-<li>B</li>
-<li>B</li>
-<li>A B</li>
-<li>C</li>
-<li>A</li>
-<li>A</li>
-<li>C</li>
-<li>A C</li>
-<li>C</li>
-<li>A</li>
-<li>B</li>
-<li>B D</li>
-<li>B</li>
-<li>C</li>
-<li>D</li>
-<li>B</li>
-<li>C A</li>
-<li>B</li>
-<li>D C</li>
-<li>B A</li>
-<li>C</li>
-<li>D</li>
-<li>A</li>
-<li>B D</li>
-<li>A</li>
-<li>C B</li>
-<li>D</li>
-<li>D B</li>
-<li>A</li>
-<li>D B</li>
-<li>D</li>
-<li>A D</li>
-<li>B</li>
-<li>C</li>
-<li>B</li>
-<li>C</li>
-<li>A D</li>
-<li>C</li>
-<li>A B</li>
-<li>D</li>
-<li>A</li>
-<li>B A</li>
-<li>D</li>
-<li>D</li>
-<li>A</li>
-<li>B</li>
-<li>A</li>
-<li>C</li>
-<li>B</li>
-<li>A</li>
-<li>C</li>
-<li>A B</li>
-<li>C</li>
-<li>C</li>
-<li>D</li>
-<li>C</li>
-<li>B</li>
-<li>C</li>
-<li>B D</li>
-<li>A</li>
-<li>C</li>
-<li>A</li>
-<li>C</li>
-<li>C</li>
-<li>D</li>
-<li>B</li>
-<li>C</li>
-<li>C</li>
-<li>B</li>
-<li>D</li>
-<li>B C</li>
-<li>B</li>
-<li>A B</li>
-<li>B</li>
-<li>B</li>
-<li>B A</li>
-<li>A B<br>`</li>
+<li>找出最小數量的直線，且直線覆蓋了所有 0。<br>舉個例子：<br><img src="/images/pasted-6.png" alt="upload successful"></li>
+<li>如果線的數量等於 他的長寬，就 Break 否則就繼續</li>
+<li> 選出最小值，對沒被覆蓋的元素減去最小值，而備覆蓋且並未為 0 的數值就 += 最小值<br><img src="/images/pasted-7.png" alt="upload successful"><br>我們可以發現會變成這樣<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">G[u1][v2] -= min;</span><br><span class="line">G[u1][v3] -= min;</span><br><span class="line">G[u3][v2] -= min;</span><br><span class="line">G[u3][v3] -= min;</span><br><span class="line">G[u2][v1] += min;</span><br></pre></td></tr></table></figure>
+<img src="/images/pasted-8.png" alt="upload successful"></li>
 </ol>
+<p>那麼執行完上述得循環後會得到這個</p>
+<p>而從其中選出三個 0 位置的數值相加便會是最小匹配</p>
+<p>該怎麼選擇就必須看該如何匹配</p>
+<p>可以知道第一個選擇的一定是 G[u3][v1]</p>
+<p>因為如果不選擇 u3 將會面臨無邊的情況</p>
+<p>之後我們把有關於 v1 和 u3 的位置拿掉</p>
+<p><img src="/images/pasted-9.png" alt="upload successful"></p>
+<p>那接下來也可以知道必定要選擇 G[u2][v2]</p>
+<p>因為如果不選擇 u2 將會面臨無邊的情況</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>最後將只剩下 G[u1][v3] 那這就是最後的<del>波紋</del>（邊）<br><img src="/images/pasted-2.png" alt="upload successful"></p>
+<p>複習一下前面的表</p>
+<p>可以得到 22 + 35 + 50 = 107</p>
+<p>正是我們要的答案。</p>
+<p>而如果要算最大值</p>
+<p>將所有元素定為負數</p>
+<p>找出最小值後 * -1 即可。</p>
+<hr>
+<p>參考：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=bSoZQkxc1Zw&t=1s">LINK</a></p>
 
       </section>
 
@@ -255,20 +170,20 @@
       
         <nav class="article-nav">
           
+          
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
     <div class="card-text">
       
-        <a href="/2021/11/29/KM-%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">匈牙利演算法</h2>
+        <a href="/2021/11/28/2021-11-28/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">2021/11/28 小記 3D + TOEIC</h2>
         </a>
       
-      <div class="card-text--row">Newer</div>
+      <div class="card-text--row">Older</div>
     </div>
   </article>
 </div>
-          
           
         </nav>
       
