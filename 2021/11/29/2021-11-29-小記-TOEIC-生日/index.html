@@ -22,7 +22,7 @@
 
   
 
-  <title>匈牙利演算法 | ShallowFeather Blog</title>
+  <title>2021/11/29 小記 TOEIC + 生日 | ShallowFeather Blog</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">匈牙利演算法</h1>
+          <h1 class="title-wrap">2021/11/29 小記 TOEIC + 生日</h1>
           <h2 class="title-sub-wrap">
             <strong>ShallowFeather Yang</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-11-28T19:37:16.000Z" itemprop="datePublished">2021-11-29</time>
+            <time  class="article-date" datetime="2021-11-29T15:56:17.000Z" itemprop="datePublished">2021-11-29</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -129,40 +129,23 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h4 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h4><p><del>我發現 h3 好大ouo</del></p>
-<p>匈牙利算法主要用來解決求二分圖的最大匹配問題</p>
-<p>二分圖就是一種能夠分成兩組 U，V 。且 U 上的點無法互相連通，V 也是同理，只能夠 U &lt;-&gt; V，也就是 U 跟 V互相連接。<br><img src="/images/pasted-1.png" alt="upload successful"><br>那接下來就來講我們的匈牙利算法。</p>
-<p>會用上面的圖 owo </p>
-<p>而如果寫過圖論相關的題目的話，很顯而易見的之中的線上的數值就是其權重。<br>整理成表的話長這樣。<br><img src="/images/pasted-2.png" alt="upload successful"><br>那只要透過手算便可以發現，此圖的”最小”匹配是</p>
-<p>50 + 35 + 22 ＝ 107</p>
-<p>可能要問了，為什麼是最小，這邊先賣個關子等後面解說。<br>那下面就來講解怎麼找出最小匹配</p>
-<p>首先，先找出圖中每一行的最小值，然後讓該行所有元素減去該值，白話點講就是每行減去該行最小值(好像沒差<br><img src="/images/pasted-3.png" alt="upload successful"><br>那之後我們就會得到該圖</p>
-<p>那麼重複剛剛的動作，不過是以列<br><img src="/images/pasted-4.png" alt="upload successful"><br>也就是這樣<br>會得到<br><img src="/images/pasted-5.png" alt="upload successful"><br>接下來 進入迴圈<br>總共有三步：</p>
-<ol>
-<li>找出最小數量的直線，且直線覆蓋了所有 0。<br>舉個例子：<br><img src="/images/pasted-6.png" alt="upload successful"></li>
-<li>如果線的數量等於 他的長寬，就 Break 否則就繼續</li>
-<li> 選出最小值，對沒被覆蓋的元素減去最小值，而備覆蓋且並未為 0 的數值就 += 最小值<br><img src="/images/pasted-7.png" alt="upload successful"><br>我們可以發現會變成這樣<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">G[u1][v2] -= min;</span><br><span class="line">G[u1][v3] -= min;</span><br><span class="line">G[u3][v2] -= min;</span><br><span class="line">G[u3][v3] -= min;</span><br><span class="line">G[u2][v1] += min;</span><br></pre></td></tr></table></figure>
-<img src="/images/pasted-8.png" alt="upload successful"></li>
-</ol>
-<p>那麼執行完上述得循環後會得到這個</p>
-<p>而從其中選出三個 0 位置的數值相加便會是最小匹配</p>
-<p>該怎麼選擇就必須看該如何匹配</p>
-<p>可以知道第一個選擇的一定是 G[u3][v1]</p>
-<p>因為如果不選擇 u3 將會面臨無邊的情況</p>
-<p>之後我們把有關於 v1 和 u3 的位置拿掉</p>
-<p><img src="/images/pasted-9.png" alt="upload successful"></p>
-<p>那接下來也可以知道必定要選擇 G[u2][v2]</p>
-<p>因為如果不選擇 u2 將會面臨無邊的情況</p>
-<p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p>最後將只剩下 G[u1][v3] 那這就是最後的<del>波紋</del>（邊）<br><img src="/images/pasted-2.png" alt="upload successful"></p>
-<p>複習一下前面的表</p>
-<p>可以得到 22 + 35 + 50 = 107</p>
-<p>正是我們要的答案。</p>
-<p>而如果要算最大值</p>
-<p>將所有元素定為負數</p>
-<p>找出最小值後 * -1 即可。</p>
-<hr>
-<p>參考：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=bSoZQkxc1Zw&t=1s">LINK</a></p>
+        <p>ㄟ都 今天是 17 歲生日ㄟ</p>
+<p>總之在還沒過到明天前來打個願望ㄅ</p>
+<ul>
+<li>希望明年的這個時候，特選能過一階，且面試皆順利</li>
+<li>希望多益能考到 800 以上 owo</li>
+<li>希望APCS能 5 + 5 ，CPE 能 7 題</li>
+<li>明年區賽能拿第一</li>
+</ul>
+<p>好像有點多</p>
+<p>但是區賽今年就拿該年級第一了，明年沒有很羞恥ㄅouo</p>
+<p>嘛 最近都沒碰資安 好想要回去碰一下之類的，哭R</p>
+<p>是說 今天寫 TOEIC 閱讀進步了ㄟ</p>
+<p>上個禮拜 41/100 今天 61/100 希望能繼續進步，雖然應該是因為這次沒計時</p>
+<p>錯的還是有點多 需要加強</p>
+<p>然後明天段考 暴死預定 哀</p>
+<p>真希望不用段考</p>
+<p><code>61/100 B C A A B A B D C C D B A C A B C D A D B C B C A D C B A A C B C B A B A C D C A D A B C D A A D C B C B C D D A A C B C D B B D C C C B B D D B A C A C B C B A B C  A B A C B B C C D B D C A D B C D A C A B C B B A B C C B C D C A C A B A B A D C D D A D C A D D B A A B D A B</code></p>
 
       </section>
 
@@ -170,28 +153,14 @@
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2021/11/29/2021-11-29-%E5%B0%8F%E8%A8%98-TOEIC-%E7%94%9F%E6%97%A5/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">2021/11/29 小記 TOEIC + 生日</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
     <div class="card-text">
       
-        <a href="/2021/11/28/2021-11-28/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">2021/11/28 小記 3D + TOEIC</h2>
+        <a href="/2021/11/29/KM-%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">匈牙利演算法</h2>
         </a>
       
       <div class="card-text--row">Older</div>
