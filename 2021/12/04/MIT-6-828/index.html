@@ -22,7 +22,7 @@
 
   
 
-  <title>2021/11/29 小記 TOEIC + 生日 | ShallowFeather Blog</title>
+  <title>MIT 6.828 Sleep | ShallowFeather Blog</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">2021/11/29 小記 TOEIC + 生日</h1>
+          <h1 class="title-wrap">MIT 6.828 Sleep</h1>
           <h2 class="title-sub-wrap">
             <strong>ShallowFeather Yang</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-11-29T15:56:17.000Z" itemprop="datePublished">2021-11-29</time>
+            <time  class="article-date" datetime="2021-12-04T03:08:49.000Z" itemprop="datePublished">2021-12-04</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -129,29 +129,48 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>ㄟ都 今天是 17 歲生日ㄟ</p>
-<p>總之在還沒過到明天前來打個願望ㄅ</p>
-<ul>
-<li>希望明年的這個時候，特選能過一階，且面試皆順利</li>
-<li>希望多益能考到 800 以上 owo</li>
-<li>希望APCS能 5 + 5 ，CPE 能 7 題</li>
-<li>明年區賽能拿第一</li>
-</ul>
-<p>好像有點多</p>
-<p>但是區賽今年就拿該年級第一了，明年沒有很羞恥ㄅouo</p>
-<p>嘛 最近都沒碰資安 好想要回去碰一下之類的，哭R</p>
-<p>是說 今天寫 TOEIC 閱讀進步了ㄟ</p>
-<p>上個禮拜 41/100 今天 61/100 希望能繼續進步，雖然應該是因為這次沒計時</p>
-<p>錯的還是有點多 需要加強</p>
-<p>然後明天段考 暴死預定 哀</p>
-<p>真希望不用段考</p>
-<p><code>61/100 B C A A B A B D C C D B A C A B C D A D B C B C A D C B A A C B C B A B A C D C A D A B C D A A D C B C B C D D A A C B C D B B D C C C B B D D B A C A C B C B A B C  A B A C B B C C D B D C A D B C D A C A B C B B A B C C B C D C A C A B A B A D C D D A D C A D D B A A B D A B</code></p>
+        <p>總之 我開始學這個課程，幹 有夠硬</p>
+<p>最一開始先配置環境還蠻簡單的就先略過，</p>
+<p><img src="/images/pasted-11.png" alt="upload successful"></p>
+<p>就照這樣做即可，記得 clone 下來會有 HEAD 的錯誤</p>
+<p>所以要改變到 util 的狀態，檔案就會出現了</p>
+<p>第一個要做的是 Sleep </p>
+<p>它要求實現一般 Linux 裡面的 Sleep 功能 也就是讀取 sleep <Number> 然後將該 thread sleep  Number 秒。</p>
+<p>先參考它給的提示，</p>
+<ol>
+<li>先看 xv6 book 的第一章</li>
+<li>去看 user 資料夾裡的資料，看看程式是如何實現的</li>
+<li>如果 sleep 所輸入的東西有誤，必須輸出錯誤訊息</li>
+<li>要記得 exit()<br>後面暫且不提<br>至於講義部份可以不用看最前面 直接跳 1.1 章<br>下面是 1.0 章的概述<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.0 章：主要介紹 xv6 以及 User Mode 怎麼去使用 Kernel (透過 shell 去 call system call)</span><br><span class="line">所以可以不用看</span><br></pre></td></tr></table></figure>
+那接下來就來做第一個 Sleep </li>
+</ol>
+<p>那麼一開始先看文檔</p>
+<p>可以看到這邊有這幾個 syscall</p>
+<p><img src="/images/pasted-12.png" alt="upload successful"></p>
+<p>其中就包含了我們所需要的 sleep</p>
+<p>所以它所要求的就是我們直接去 call sleep 這個 syscall</p>
+<p>那這邊我們可以參考它的 user/echo.c 檔案</p>
+<p>就可以發現到</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;user/user.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span></span></span><br><span class="line"><span class="function"><span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; argc; i++)&#123;</span><br><span class="line">    write(<span class="number">1</span>, argv[i], <span class="built_in">strlen</span>(argv[i]));</span><br><span class="line">    <span class="keyword">if</span>(i + <span class="number">1</span> &lt; argc)&#123;</span><br><span class="line">      write(<span class="number">1</span>, <span class="string">&quot; &quot;</span>, <span class="number">1</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      write(<span class="number">1</span>, <span class="string">&quot;\n&quot;</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>argc 指的是後面會有幾個指令 像是 (ls a b c) 這樣共有 4 個 而 argv 則是存它的字串</p>
+<p>那麼其實它提示也寫了 有提供 stoi 這個指令 <del>高屏區賽 OJ 沒有 氣死</del></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;kernel/types.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;kernel/stat.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;user/user.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(argc != <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="number">2</span>, <span class="string">&quot;usage: sleep\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> time = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">		sleep(time);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>於是我們就直接這樣寫<br>就能夠 call 到他的 syscall 了</p>
+<p>喔對 我忘了講 可以打開 user/user.h 看現在有的 syscall 喔</p>
+<p>最後我們到 根目錄的 Makefile 的 179 行</p>
+<p><img src="/images/pasted-13.png" alt="upload successful"></p>
+<p>把我們的 Sleep 補上去</p>
+<p><img src="/images/pasted-14.png" alt="upload successful"></p>
+<p>最後我們丟給它測試 就會發現成功了owob</p>
+<hr>
+<p>其他後面再補 現在我也才寫到 xargs<br>MIT 真的好鬼</p>
 
       </section>
 
       
       
         <nav class="article-nav">
+          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
@@ -160,21 +179,6 @@
       
         <a href="/2021/12/01/2021-11-30-%E5%B0%8F%E8%A8%98-TOEIC-%E6%AE%B5%E8%80%83/" itemprop="url">
           <h2 class="card-text--title text-ellipsis">2021/11/30 小記 TOEIC + 段考</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
-          
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2021/11/29/KM-%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">匈牙利演算法</h2>
         </a>
       
       <div class="card-text--row">Older</div>
