@@ -223,12 +223,12 @@ header .nav-list-item a {
   font-size: 1rem;
 }
 .archive .post-title-link {
-  color: #9e1900;
+  color: #009b9e;
   padding-left: 1em;
 }
 .archive .post-title-link:hover {
   border-bottom: 0;
-  color: #801501;
+  color: #018080;
 }
 .archive .post-info {
   width: 6em;
@@ -321,6 +321,15 @@ header .nav-list-item a {
 .post-content a {
   color: #9e1900;
 }
+
+.post-content p {
+  background-color: rgba(33, 42, 70, 0.699); /* 使用rgba表示法，最後一個參數1表示完全不透明 */
+  color: rgb(255, 251, 251); /* 最後一個參數0表示完全透明 */
+  border: 10px solid rgba(33, 42, 70, 0.5);
+  border-radius: 0.5em;
+}
+
+
 .post-content blockquote {
   margin: 2em 0;
   padding: .5em 1.3em;
